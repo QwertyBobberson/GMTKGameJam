@@ -13,10 +13,25 @@ public class DeckManager : MonoBehaviour
     public GameObject[] drawPile;
 
     public int cardNum;
+    public Vector3 cardLocation;
+    public Vector3 cardOffset;
 
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+        hand = new GameObject[3];
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            ShuffleIntoDrawPile(allTowers);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            DrawCard();
+        }
     }
 
     public void ShuffleIntoDrawPile(GameObject[] toShuffle)
@@ -34,27 +49,31 @@ public class DeckManager : MonoBehaviour
 
             drawPile[index] = toShuffle[i];
         }
+
+        discardPile = new GameObject[drawPile.Count()];
+        cardNum = 0;
     }
 
     public void DrawCard()
     {
-        for(int i = 0; i < hand.Length; i++)
+        if (cardNum == drawPile.Length)
+        {
+            ShuffleIntoDrawPile(discardPile);
+            for (int j = 0; j < discardPile.Count(); j++)
+            {
+                discardPile[j] = null;
+            }
+        }
+
+        for (int i = 0; i < hand.Length; i++)
         {
             if(hand[i] == null)
             {
                 hand[i] = drawPile[cardNum];
                 cardNum++;
+                Instantiate(hand[i], cardLocation + cardOffset * i, Quaternion.identity);
                 //Have to do something visual here
-            }
-        }
-
-        if(cardNum == drawPile.Length - 1)
-        {
-            ShuffleIntoDrawPile(discardPile);
-            for(int i = 0; i < discardPile.Count(); i++)
-            {
-                discardPile[i] = null;
-                cardNum = 0;
+                return;
             }
         }
     }

@@ -11,16 +11,8 @@ public class Spawner : MonoBehaviour
 
     float timeSinceLastSpawn = 0.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        Debug.Log(timeSinceLastSpawn);
         timeSinceLastSpawn += Time.deltaTime;
         if (timeSinceLastSpawn > spawntime)
         {
