@@ -12,14 +12,14 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pathNodes = GameObject.Find("MapPath").GetComponent<MapPath>().pathNodes;
+        pathNodes = GameObject.FindObjectOfType<MapPath>().pathNodes;
         nextDestination = pathNodes[0].transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((nextDestination - transform.position).sqrMagnitude < 0.1)
+        if ((nextDestination - transform.position).sqrMagnitude < 0.0001)
         {
             if (nextIndex < pathNodes.Length - 1)
             {
