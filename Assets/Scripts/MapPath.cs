@@ -15,8 +15,8 @@ public class MapPath : MonoBehaviour
     void Start()
     {
         ArrayList pathLocation = new ArrayList();
-        ArrayList towerTiles = new ArrayList();
-        ArrayList pathTiles = new ArrayList();
+        List<GameObject> towerTiles = new List<GameObject>();
+        List<GameObject> pathTiles = new List<GameObject>();
         for(int i = 0; i < pathNodes.Length - 1; i++)
         {
             for(int j = 0; j < (pathNodes[i].transform.position - pathNodes[i + 1].transform.position).magnitude/scale; j++)
@@ -24,16 +24,15 @@ public class MapPath : MonoBehaviour
                 Vector3 direction = (pathNodes[i + 1].transform.position - pathNodes[i].transform.position).normalized;
                 pathTiles.Add(Instantiate(pathTile, pathNodes[i].transform.position + direction * scale * j, Quaternion.identity));
                 (int, int) currLoc = ((int)(pathNodes[i].transform.position + direction * scale * j).x, (int)(pathNodes[i].transform.position + direction * scale * j).y);
-                pathLocation.Add(currLoc);
-                
+                pathLocation.Add(currLoc); 
             }
         }
 
-        for(int i = -10; i <= 10; i++)
+        for(float i = -7f; i <= 9.5f; i += 0.75f)
         {
-            for (int j = -2; j <= 5; j++)
+            for (float j = -5f; j <= 5f; j += 0.75f)
             {
-                (int, int) currLoc = (i, j);
+                (float, float) currLoc = (i, j);
                 if (!pathLocation.Contains(currLoc))
                 {
                     towerTiles.Add(Instantiate(towerTile, new Vector3(i, j, 0), Quaternion.Euler(0, 0, 0)));
