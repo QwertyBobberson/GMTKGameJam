@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6290608502806137600}
   - component: {fileID: 9190034541196028254}
   - component: {fileID: 1406178564754896375}
-  - component: {fileID: -4144182741615802875}
   - component: {fileID: 4707828808622361346}
   m_Layer: 0
   m_Name: Water
@@ -30,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5577170433116571747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 10, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 7d9e5b50dd3014e4e93da0e7a53132ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d6263acc936fd04ab057d1cf6232e6d, type: 3}
   m_Color: {r: 0.16862746, g: 0.4901961, b: 0.8078432, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,18 +98,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
+  m_Offset: {x: 5.35, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 1}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.51384985, y: 0.9949217}
+    oldSize: {x: 10.69748, y: 41.809998}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6, y: 43}
   m_EdgeRadius: 0
 --- !u!50 &1406178564754896375
 Rigidbody2D:
@@ -133,20 +132,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-4144182741615802875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5577170433116571747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8212f18b073285c42976b4994767dcad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmt: 0
-  health: 0
 --- !u!114 &4707828808622361346
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,10 +16,17 @@ public class DeckManager : MonoBehaviour
     public Vector3 cardLocation;
     public Vector3 cardOffset;
 
+    public GameObject[] towerTypes;
+
+    List<ArrayList> blocksAtADistance;
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
         hand = new GameObject[3];
+        blocksAtADistance = GameObject.FindObjectOfType<MapPath>().blocksAtADistance;
+        Debug.Log(blocksAtADistance);
+
     }
 
     private void Update()
@@ -70,6 +77,7 @@ public class DeckManager : MonoBehaviour
             if(hand[i] == null)
             {
                 hand[i] = drawPile[cardNum];
+                hand[i].GetComponent<Card>().locInHand = i;
                 cardNum++;
                 Instantiate(hand[i], cardLocation + cardOffset * i, Quaternion.identity);
                 //Have to do something visual here
@@ -78,22 +86,28 @@ public class DeckManager : MonoBehaviour
         }
     }
 
-    public void PlayCard(GameObject card)
+    public void PlayCard(Card card)
     {
-        for(int i = 0; i < hand.Length; i++)
-        {
-            if(hand[i] == card)
-            {
-                SpawnCard();
-                discardPile[i] = card;
-                hand[i] = null;
-                DrawCard();
-            }
-        }
+        int i = card.locInHand;
+        // arbitrarily picking a distance of 4 for now:
+        Debug.Log("ooh that tickles like cheese");
+        SpawnCard(4, card);
+        discardPile[i] = card.gameObject;
+        hand[i] = null;
+        DrawCard();
     }
 
-    public void SpawnCard()
+    public void SpawnCard(int distance, Card card)
     {
-        //Someone else can do this
+        distance--;
+        Debug.Log(blocksAtADistance);
+        Debug.Log(blocksAtADistance.Count);
+        Debug.Log(blocksAtADistance[distance]);
+
+        int randomSpawnPoint = Random.Range(0, blocksAtADistance[distance].Count);
+        Vector3 spawnLocation = ((GameObject)blocksAtADistance[distance][randomSpawnPoint]).transform.position;
+        GameObject.Instantiate(towerTypes[card.GetComponent<Card>().towerType], spawnLocation, Quaternion.Euler(0,0,0));
+        Debug.Log("ooh that tickles burgers");
+
     }
 }

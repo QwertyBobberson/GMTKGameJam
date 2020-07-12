@@ -41,12 +41,10 @@ public class Fireman : MonoBehaviour
             if (spawnedFire == null)
             {
                 spawnedFire = GameObject.Instantiate(fire, transform.position, Quaternion.FromToRotation(Vector2.up, transform.position - closestEnemy.transform.position));
-                transform.rotation = Quaternion.FromToRotation(Vector2.up, transform.position - closestEnemy.transform.position);
 
             }
             else
             {
-                transform.rotation = Quaternion.FromToRotation(Vector2.up, transform.position - closestEnemy.transform.position);
                 spawnedFire.transform.rotation = Quaternion.FromToRotation(Vector2.up, transform.position - closestEnemy.transform.position);
             }
         } else if (spawnedFire != null)

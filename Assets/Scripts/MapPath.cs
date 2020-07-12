@@ -10,12 +10,12 @@ public class MapPath : MonoBehaviour
     public GameObject towerTile;
     public float scale;
     public GameObject[] pathNodes;
-    public ArrayList blocksAtADistance;
+    public List<ArrayList> blocksAtADistance;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        ArrayList pathLocation = new ArrayList();
+        List<Vector2> pathLocation = new List<Vector2>();
         List<GameObject> towerTiles = new List<GameObject>();
         List<GameObject> pathTiles = new List<GameObject>();
         for(int i = 0; i < pathNodes.Length - 1; i++)
@@ -24,35 +24,44 @@ public class MapPath : MonoBehaviour
             {
                 Vector3 direction = (pathNodes[i + 1].transform.position - pathNodes[i].transform.position).normalized;
                 pathTiles.Add(Instantiate(pathTile, pathNodes[i].transform.position + direction * scale * j, Quaternion.identity));
-                (int, int) currLoc = ((int)(pathNodes[i].transform.position + direction * scale * j).x, (int)(pathNodes[i].transform.position + direction * scale * j).y);
+                Vector2 currLoc = (pathNodes[i].transform.position + direction * scale * j);
                 pathLocation.Add(currLoc); 
             }
         }
 
         pathTiles.Add(Instantiate(pathTile, pathNodes[pathNodes.Count() - 1].transform.position, Quaternion.identity));
+        pathLocation.Add(pathNodes[pathNodes.Count() - 1].transform.position);
+
 
         for (float i = -7f; i <= 9.5f; i += 0.75f)
         {
             for (float j = -5f; j <= 5f; j += 0.75f)
             {
-                (float, float) currLoc = (i, j);
-                if (!pathLocation.Contains(currLoc))
+                Vector2 currLoc = new Vector2(i, j);
+                bool defNot = false;
+                for (int k = 0; k < pathLocation.Count; k++)
                 {
-                    towerTiles.Add(Instantiate(towerTile, new Vector3(i, j, 0), Quaternion.Euler(0, 0, 0)));
+                    if ((pathLocation[k] - currLoc).sqrMagnitude < 0.3)
+                    {
+                        defNot = true;
+                    }
                 }
+               if (!defNot)
+               {
+                    // def yes
+                    towerTiles.Add(Instantiate(towerTile, new Vector3(i, j, 0), Quaternion.Euler(0, 0, 0)));
+               }
             }
         }
 
         GameObject[] towerTilesArr = (GameObject[]) towerTiles.ToArray();
         GameObject[] pathTilesArr = (GameObject[]) pathTiles.ToArray();
-        blocksAtADistance = new ArrayList();
-        blocksAtADistance.Add(new ArrayList());
-        blocksAtADistance.Add(new ArrayList());
-        blocksAtADistance.Add(new ArrayList());
-        blocksAtADistance.Add(new ArrayList());
-        blocksAtADistance.Add(new ArrayList());
-        blocksAtADistance.Add(new ArrayList());
-        blocksAtADistance.Add(new ArrayList());
+        Debug.Log("cheese is yum");
+        blocksAtADistance = new List<ArrayList>();
+        for (int  i = 0; i < 13; i++)
+        {
+            blocksAtADistance.Add(new ArrayList());
+        }
         for (int i = 0; i < towerTilesArr.Length; i++)
         {
             GameObject currTile = towerTilesArr[i];

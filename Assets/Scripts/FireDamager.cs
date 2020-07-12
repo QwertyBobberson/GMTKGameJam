@@ -24,7 +24,6 @@ public class FireDamager : MonoBehaviour
         if (collision.gameObject.GetComponent<EnemyMovement>())
         {
             collision.gameObject.GetComponent<EnemyMovement>().SendMessage("TakeDamage", damageAmt * Time.fixedDeltaTime);
-            Debug.Log(damageAmt * Time.fixedTime);
 
         }
     }
@@ -33,8 +32,7 @@ public class FireDamager : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<EnemyMovement>())
         {
-             collision.gameObject.GetComponent<EnemyMovement>().SendMessage("TakeDamage", damageAmt * Time.fixedDeltaTime);
-            Debug.Log(damageAmt * Time.fixedTime);
+            collision.gameObject.GetComponent<EnemyMovement>().SendMessage("TakeDamage", damageAmt * Time.fixedDeltaTime);
         }
     }
 }
