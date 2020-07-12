@@ -77,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void Die()
     {
-        PlayerStats.money += (int)maxHealth;
+        PlayerStats.money += (int)maxHealth/10;
         Destroy(gameObject);
     }
 

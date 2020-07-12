@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerType: 3
   locInHand: 1
-  cost: 0
+  cost: 5
   probabilities:
   - 0
   - 0

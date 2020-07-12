@@ -79,31 +79,35 @@ public class DeckManager : MonoBehaviour
 
     public void PlayCard(Card card)
     {
-        int i = card.locInHand;
-        // arbitrarily picking a distance of 4 for now:
-        discardPile.Add(card.gameObject);
-        card.transform.position = new Vector3(100, 100, 0);
-        int randDistance = 0;
-        int counter = 0;
-        do
+        if(card.cost <= PlayerStats.money)
         {
-            randDistance = 0;
-            counter++;
-            float randPercent = Random.Range(0.0f, 1.0f);
-            Debug.Log("rand percent:" + randPercent + " " + card.probabilities.Length);
-            float sumOfProbabilities = 0.0f;
-            while (randPercent > sumOfProbabilities && randDistance < card.probabilities.Length)
+            PlayerStats.money -= card.cost;
+            int i = card.locInHand;
+            // arbitrarily picking a distance of 4 for now:
+            discardPile.Add(card.gameObject);
+            card.transform.position = new Vector3(100, 100, 0);
+            int randDistance = 0;
+            int counter = 0;
+            do
             {
-                sumOfProbabilities += card.probabilities[randDistance];
-                Debug.Log("sum:" + sumOfProbabilities);
-                randDistance++;
-            }
-            randDistance--;
-            Debug.Log("dist:" + randDistance);
-        } while (blocksAtADistance[randDistance].Count < 1 && counter < 1000);
-        SpawnCard(randDistance, card);
-        hand[i] = null;
-        DrawCard();
+                randDistance = 0;
+                counter++;
+                float randPercent = Random.Range(0.0f, 1.0f);
+                Debug.Log("rand percent:" + randPercent + " " + card.probabilities.Length);
+                float sumOfProbabilities = 0.0f;
+                while (randPercent > sumOfProbabilities && randDistance < card.probabilities.Length)
+                {
+                    sumOfProbabilities += card.probabilities[randDistance];
+                    Debug.Log("sum:" + sumOfProbabilities);
+                    randDistance++;
+                }
+                randDistance--;
+                Debug.Log("dist:" + randDistance);
+            } while (blocksAtADistance[randDistance].Count < 1 && counter < 1000);
+            SpawnCard(randDistance, card);
+            hand[i] = null;
+            DrawCard();
+        }
     }
 
     public void SpawnCard(int distance, Card card)

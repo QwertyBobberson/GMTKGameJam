@@ -33,7 +33,6 @@ public class BasicShooter : MonoBehaviour
 
     void Shoot()
     {
-        audio.Play();
         GameObject closestEnemy = null;
         float distanceToClosestEnemy = float.MaxValue;
 
@@ -49,6 +48,7 @@ public class BasicShooter : MonoBehaviour
         }
         if (distanceToClosestEnemy < maxRangeSquared)
         {
+            audio.Play();
             GameObject spawnedBullet = GameObject.Instantiate(bullet, transform.position, Quaternion.FromToRotation(transform.position, closestEnemy.transform.position));
             BasicBullet bulletScript = spawnedBullet.GetComponent<BasicBullet>();
             bulletScript.damageAmt = 10;
