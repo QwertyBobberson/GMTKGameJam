@@ -32,6 +32,11 @@ public class DeckManager : MonoBehaviour
             drawPile.Add(GameObject.Instantiate(allTowers[i], new Vector3(100, 100, 0), Quaternion.identity));
             allTowers.RemoveAt(i);
         }
+
+        for(int i = 0; i < hand.Length; i++)
+        {
+            DrawCard();
+        }
     }
 
     private void Update()

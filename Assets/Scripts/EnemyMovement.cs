@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     int nextIndex = 0;
     Vector3 nextDestination;
     public float movementSpeed;
+    public float maxHealth;
     public float health;
     public float damageAmt;
     public float reloadTime;
@@ -22,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
         timeOfLastDamageFromBlocker = 0.0f;
         lastPunchTime = 0.0f;
         nextDestination = pathNodes[0].transform.position;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -50,6 +53,11 @@ public class EnemyMovement : MonoBehaviour
                     nextIndex++;
                     nextDestination = pathNodes[nextIndex].transform.position;
                 }
+                else
+                {
+                    PlayerStats.health--;
+                    Die();
+                }
             }
             else
             {
@@ -69,6 +77,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void Die()
     {
+        PlayerStats.money += (int)maxHealth;
         Destroy(gameObject);
     }
 

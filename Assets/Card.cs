@@ -22,9 +22,6 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("ooh that tickles");
-        GameObject.FindObjectOfType<DeckManager>().PlayCard(this);
-        
-    }
+        GameObject.FindObjectOfType<DeckManager>().PlayCard(this);    }
 
 }
