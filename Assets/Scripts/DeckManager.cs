@@ -17,7 +17,7 @@ public class DeckManager : MonoBehaviour
     public Vector3 cardOffset;
 
     public GameObject[] towerTypes;
-
+    List<GameObject> pathTiles;
     List<ArrayList> blocksAtADistance;
 
     private void Start()
@@ -25,14 +25,13 @@ public class DeckManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         blocksAtADistance = GameObject.FindObjectOfType<MapPath>().blocksAtADistance;
         hand = new GameObject[3];
-
         while(allTowers.Count != 0)
         {
             int i = Random.Range(0, allTowers.Count);
             drawPile.Add(GameObject.Instantiate(allTowers[i], new Vector3(100, 100, 0), Quaternion.identity));
             allTowers.RemoveAt(i);
         }
-
+        pathTiles = GameObject.FindObjectOfType<MapPath>().pathTiles;
         for(int i = 0; i < hand.Length; i++)
         {
             DrawCard();
@@ -82,20 +81,41 @@ public class DeckManager : MonoBehaviour
     {
         int i = card.locInHand;
         // arbitrarily picking a distance of 4 for now:
-        SpawnCard(4, card);
         discardPile.Add(card.gameObject);
         card.transform.position = new Vector3(100, 100, 0);
+        int randDistance = 0;
+        int counter = 0;
+        do
+        {
+            randDistance = 0;
+            counter++;
+            float randPercent = Random.Range(0.0f, 1.0f);
+            Debug.Log("rand percent:" + randPercent + " " + card.probabilities.Length);
+            float sumOfProbabilities = 0.0f;
+            while (randPercent > sumOfProbabilities && randDistance < card.probabilities.Length)
+            {
+                sumOfProbabilities += card.probabilities[randDistance];
+                Debug.Log("sum:" + sumOfProbabilities);
+                randDistance++;
+            }
+            randDistance--;
+            Debug.Log("dist:" + randDistance);
+        } while (blocksAtADistance[randDistance].Count < 1 && counter < 1000);
+        SpawnCard(randDistance, card);
         hand[i] = null;
         DrawCard();
     }
 
     public void SpawnCard(int distance, Card card)
     {
-        distance--;
-
         int randomSpawnPoint = Random.Range(0, blocksAtADistance[distance].Count);
         Vector3 spawnLocation = ((GameObject)blocksAtADistance[distance][randomSpawnPoint]).transform.position;
-        GameObject.Instantiate(towerTypes[card.GetComponent<Card>().towerType], spawnLocation, Quaternion.Euler(0,0,0));
+        if (card.GetComponent<Card>().towerType == 1)
+        {
+            randomSpawnPoint = Random.Range(0, pathTiles.Count);
+            spawnLocation = ((GameObject)pathTiles[randomSpawnPoint]).transform.position;
 
+        }
+        GameObject.Instantiate(towerTypes[card.GetComponent<Card>().towerType], spawnLocation, Quaternion.Euler(0, 0, 0));
     }
 }
