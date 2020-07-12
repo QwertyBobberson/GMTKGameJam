@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class MapPath : MonoBehaviour
@@ -28,7 +29,9 @@ public class MapPath : MonoBehaviour
             }
         }
 
-        for(float i = -7f; i <= 9.5f; i += 0.75f)
+        pathTiles.Add(Instantiate(pathTile, pathNodes[pathNodes.Count() - 1].transform.position, Quaternion.identity));
+
+        for (float i = -7f; i <= 9.5f; i += 0.75f)
         {
             for (float j = -5f; j <= 5f; j += 0.75f)
             {
