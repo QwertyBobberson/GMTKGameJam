@@ -16,8 +16,6 @@ public class Spawner : MonoBehaviour
         timeSinceLastSpawn += Time.deltaTime;
         if (timeSinceLastSpawn > spawntime)
         {
-            Debug.Log("hm");
-
             timeSinceLastSpawn = 0.0f;
             SpawnEnemy();
         }
