@@ -789,8 +789,8 @@ MonoBehaviour:
   discardPile: []
   drawPile: []
   cardNum: 0
-  cardLocation: {x: -5, y: -4, z: 0}
-  cardOffset: {x: 5, y: 0, z: 0}
+  cardLocation: {x: -9, y: 3.75, z: 0}
+  cardOffset: {x: 0, y: -3.75, z: 0}
 --- !u!1 &1033318549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathTile: {fileID: 3973985229311644871, guid: bde183062d7d78f4e944134eb0a5a37f, type: 3}
+  towerTile: {fileID: 3973985229311644871, guid: aea74179eb1759342bd2b9da9f0db2e5, type: 3}
   scale: 1
   pathNodes:
   - {fileID: 634212615}
