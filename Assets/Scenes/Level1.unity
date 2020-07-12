@@ -494,6 +494,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9870105e80879740b713c3101999a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathTile: {fileID: 0}
+  scale: 0
   pathNodes:
   - {fileID: 1847389603}
   - {fileID: 861479248}
