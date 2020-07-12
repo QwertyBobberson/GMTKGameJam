@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fire: {fileID: 5577170433116571747, guid: 14d15d15ef5cf9e4fad5e8dc24b73a84, type: 3}
-  maxRangeSquared: 10
+  maxRangeSquared: 100
 --- !u!82 &-4213560376500602104
 AudioSource:
   m_ObjectHideFlags: 0
