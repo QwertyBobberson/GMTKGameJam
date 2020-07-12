@@ -21,7 +21,6 @@ public class BasicBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("hm");
         if (collision.gameObject.GetComponent<EnemyMovement>())
         {
             collision.gameObject.GetComponent<EnemyMovement>().SendMessage("TakeDamage", damageAmt);

@@ -46,7 +46,6 @@ public class BasicShooter : MonoBehaviour
                 closestEnemy = currEnemy;
             }
         }
-        Debug.Log(distanceToClosestEnemy);
         if (distanceToClosestEnemy < maxRangeSquared)
         {
             GameObject spawnedBullet = GameObject.Instantiate(bullet, transform.position, Quaternion.FromToRotation(transform.position, closestEnemy.transform.position));
