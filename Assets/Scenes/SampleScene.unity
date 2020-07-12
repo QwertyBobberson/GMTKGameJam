@@ -154,8 +154,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnpoints:
   - {fileID: 1927704571}
-  spawntime: 1
-  enemy: {fileID: 7723949462172637026, guid: 125c7f32ad52a184d8662783f6c89058, type: 3}
+  wave:
+  - array:
+    - {fileID: 7723949462172637026, guid: 125c7f32ad52a184d8662783f6c89058, type: 3}
+    - {fileID: 7723949462172637026, guid: 125c7f32ad52a184d8662783f6c89058, type: 3}
+    - {fileID: 7723949462172637026, guid: 125c7f32ad52a184d8662783f6c89058, type: 3}
+  - array:
+    - {fileID: 7723949462172637026, guid: 125c7f32ad52a184d8662783f6c89058, type: 3}
+    - {fileID: 7723949462172637026, guid: 125c7f32ad52a184d8662783f6c89058, type: 3}
+    - {fileID: 7723949462172637026, guid: 125c7f32ad52a184d8662783f6c89058, type: 3}
+    - {fileID: 7723949462172637026, guid: 125c7f32ad52a184d8662783f6c89058, type: 3}
+  spawnTime: 1
+  waveDelay: 5
 --- !u!4 &424446
 Transform:
   m_ObjectHideFlags: 0
@@ -684,6 +694,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -756,6 +767,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521ca650812324943824f7137d9d7f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allTowers:
+  - {fileID: 8599523139093270377, guid: b1da3dc1d4017ad49acbd3c4dcfd8018, type: 3}
+  - {fileID: 381962431334286996, guid: f310a99e4539d7745b78c1ed0a422cbe, type: 3}
+  - {fileID: 4204194260183391109, guid: 9445993b88e641247bc4bd84d4b5b376, type: 3}
+  - {fileID: 3055892487987232747, guid: 7236d3c107bbb7940b7db7541eadcadc, type: 3}
+  deck: []
+  hand: []
+  discardPile: []
+  drawPile: []
+  cardNum: 0
+  cardLocation: {x: -5, y: -4, z: 0}
+  cardOffset: {x: 5, y: 0, z: 0}
 --- !u!1 &1033318549
 GameObject:
   m_ObjectHideFlags: 0
