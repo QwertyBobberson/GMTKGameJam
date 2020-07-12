@@ -38,7 +38,6 @@ public class EnemyMovement : MonoBehaviour
         {
             if (gameObject.GetComponent<BoxCollider2D>().IsTouching(((PathBlocker)pathBlockers[i]).gameObject.GetComponent<BoxCollider2D>()))
             {
-                Debug.Log("u o");
                 dontMove = true;
             }
         }

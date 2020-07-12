@@ -56,7 +56,6 @@ public class MapPath : MonoBehaviour
 
         GameObject[] towerTilesArr = (GameObject[]) towerTiles.ToArray();
         GameObject[] pathTilesArr = (GameObject[]) pathTiles.ToArray();
-        Debug.Log("cheese is yum");
         blocksAtADistance = new List<ArrayList>();
         for (int  i = 0; i < 13; i++)
         {

@@ -35,7 +35,6 @@ public class Fireman : MonoBehaviour
                 closestEnemy = currEnemy;
             }
         }
-        Debug.Log(distanceToClosestEnemy);
         if (distanceToClosestEnemy < maxRangeSquared)
         {
             if (spawnedFire == null)
