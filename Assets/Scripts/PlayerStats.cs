@@ -9,23 +9,30 @@ public class PlayerStats : MonoBehaviour
     public static int health;
     public static int money;
 
+    public int maxHealth;
+    public int startingMoney;
+
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI moneyText;
 
-    private void Start()
+    private void Awake()
     {
-        health = 3;
-        money = 5;
+        health = maxHealth;
+        money = startingMoney;
     }
 
     private void Update()
     {
         if(health <= 0)
         {
+            Debug.Log("No health");
             SceneManager.LoadScene("Menu");
         }
-        healthText.text = health + "";
-        moneyText.text = money + "";
 
+        if(healthText != null)
+        {
+            healthText.text = health + "";
+            moneyText.text = money + "";
+        }
     }
 }
