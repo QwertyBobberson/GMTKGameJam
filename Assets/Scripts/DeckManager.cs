@@ -22,7 +22,6 @@ public class DeckManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         blocksAtADistance = GameObject.FindObjectOfType<MapPath>().blocksAtADistance;
         hand = new GameObject[3];
         while(allTowers.Count != 0)

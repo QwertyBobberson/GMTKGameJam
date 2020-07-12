@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 2656840730077537608}
   - component: {fileID: 2957561958981282090}
   - component: {fileID: -4562561261753061643}
+  - component: {fileID: -932280166832401552}
   - component: {fileID: 6478800240320688675}
-  - component: {fileID: 7574414719304804978}
+  - component: {fileID: 560559368159923088}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 803bb1318df9bdf449501c8d652765f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e13e6306826e7154cb195b475577b27a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,12 +99,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  maxHealth: 10
+  maxHealth: 40
   health: 10
-  damageAmt: 3
+  damageAmt: 6
   reloadTime: 2
   lastPunchTime: 0
   timeOfLastDamageFromBlocker: 0
+--- !u!61 &-932280166832401552
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7723949462172637026}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 24.84, y: 24.84}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0
 --- !u!50 &6478800240320688675
 Rigidbody2D:
   serializedVersion: 4
@@ -125,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &7574414719304804978
+--- !u!58 &560559368159923088
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

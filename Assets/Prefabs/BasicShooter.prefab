@@ -99,7 +99,7 @@ MonoBehaviour:
   maxRangeSquared: 75.21
   damage: 10
   health: 10
-  reloadTime: 3
+  reloadTime: 1
   bullet: {fileID: 4430802642763308349, guid: 40fe05959d9d29e48a3c76b40f128231, type: 3}
   bulletSpeed: 21
 --- !u!82 &-8093128454566771801

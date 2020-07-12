@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
         Object[] pathBlockers = GameObject.FindObjectsOfType<PathBlocker>();
         for (int i = 0; i < pathBlockers.Length; i++)
         {
-            if (gameObject.GetComponent<BoxCollider2D>().IsTouching(((PathBlocker)pathBlockers[i]).gameObject.GetComponent<BoxCollider2D>()))
+            if (gameObject.GetComponent<CircleCollider2D>().IsTouching(((PathBlocker)pathBlockers[i]).gameObject.GetComponent<BoxCollider2D>()))
             {
                 dontMove = true;
             }
