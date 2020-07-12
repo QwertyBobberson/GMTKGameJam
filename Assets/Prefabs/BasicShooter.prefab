@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f39a7db44ce0641bf0d1dad809fbe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRangeSquared: 75.21
-  damage: 10
+  maxRangeSquared: 50
+  damage: 5
   health: 10
   reloadTime: 1
   bullet: {fileID: 4430802642763308349, guid: 40fe05959d9d29e48a3c76b40f128231, type: 3}
