@@ -23,10 +23,10 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-        if(health <= 0)
+        if(health == 0)
         {
-            Debug.Log("No health");
             SceneManager.LoadScene("Menu");
+            health = -1;
         }
 
         if(healthText != null)

@@ -8,10 +8,12 @@ public class Fireman : MonoBehaviour
     public float maxRangeSquared;
     GameObject spawnedFire = null;
 
+    AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class Fireman : MonoBehaviour
         }
         if (distanceToClosestEnemy < maxRangeSquared)
         {
+            audio.Play();
             if (spawnedFire == null)
             {
                 spawnedFire = GameObject.Instantiate(fire, transform.position, Quaternion.FromToRotation(Vector2.up, transform.position - closestEnemy.transform.position));

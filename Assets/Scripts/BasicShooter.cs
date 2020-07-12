@@ -10,14 +10,14 @@ public class BasicShooter : MonoBehaviour
     public float reloadTime;
     public GameObject bullet;
     public float bulletSpeed;
-    
 
+    AudioSource audio;
     float timeSinceShoot = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,6 +33,7 @@ public class BasicShooter : MonoBehaviour
 
     void Shoot()
     {
+        audio.Play();
         GameObject closestEnemy = null;
         float distanceToClosestEnemy = float.MaxValue;
 

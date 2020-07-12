@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+  maxHealth: 10
   health: 10
   damageAmt: 3
   reloadTime: 2
