@@ -10,6 +10,7 @@ public class MapPath : MonoBehaviour
     public GameObject towerTile;
     public float scale;
     public GameObject[] pathNodes;
+    public List<GameObject> pathTiles;
     public List<ArrayList> blocksAtADistance;
 
     // Start is called before the first frame update
@@ -17,7 +18,7 @@ public class MapPath : MonoBehaviour
     {
         List<Vector2> pathLocation = new List<Vector2>();
         List<GameObject> towerTiles = new List<GameObject>();
-        List<GameObject> pathTiles = new List<GameObject>();
+        pathTiles = new List<GameObject>();
         for(int i = 0; i < pathNodes.Length - 1; i++)
         {
             for(int j = 0; j < (pathNodes[i].transform.position - pathNodes[i + 1].transform.position).magnitude/scale; j++)
@@ -74,7 +75,9 @@ public class MapPath : MonoBehaviour
                     closestDistance = currDistance;
                 }
             }
-            ((ArrayList)blocksAtADistance[(int)closestDistance]).Add(currTile);
+            int indexInArr = Mathf.RoundToInt(closestDistance / 0.75f) - 1;
+            ((ArrayList)blocksAtADistance[indexInArr]).Add(currTile);
+            Debug.Log( indexInArr + " " + blocksAtADistance[indexInArr].Count);
         }
     }
 }

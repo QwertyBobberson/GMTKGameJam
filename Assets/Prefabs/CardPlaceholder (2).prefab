@@ -98,6 +98,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerType: 2
   locInHand: 2
+  cost: 0
+  probabilities:
+  - 0.15
+  - 0.25
+  - 0.35
+  - 0.03
+  - 0.01
+  - 0.005
+  - 0.005
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!61 &-474362461503689152
 BoxCollider2D:
   m_ObjectHideFlags: 0
