@@ -7,6 +7,8 @@ public class Card : MonoBehaviour
 
     public int towerType;
     public int locInHand;
+    public int cost;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GameObject.FindObjectOfType<DeckManager>().PlayCard(this);    }
+        GameObject.FindObjectOfType<DeckManager>().PlayCard(this);    
+    }
 
 }
